@@ -14,6 +14,15 @@ Vue.config.productionTip = false
 
 // 配置请求的根路径
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
+
+// 通过接口获取菜单数据
+// 通过axios请求拦截器添加token,保证拥有获取数据的权限
+axios.interceptors.request.use(config => {
+  // 为请求头对象，添加Token验证的authorization字段
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
+})
+
 // 全局使用axios
 Vue.prototype.$http = axios
 
