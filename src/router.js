@@ -5,22 +5,29 @@ import Login from './components/Login'
 import Home from './components/Home'
 import Welcome from './components/Welcome'
 import Users from './components/user/Users'
+import Rights from './components/power/Rights'
+import Roles from './components/power/Roles'
 Vue.use(VueRouter)
 
 const routes = [
   // 配置主页重定向
   { path: '/', redirect: '/login' },
   { path: '/login', component: Login },
-  { path: '/home', component: Home , redirect: '/welcome' ,children: [
-    { path: '/welcome', component: Welcome },
-    { path: '/users', component: Users}
-  ]}
-
+  {
+    path: '/home',
+    component: Home,
+    redirect: '/welcome',
+    children: [
+      { path: '/welcome', component: Welcome },
+      { path: '/users', component: Users },
+      { path: '/rights', component: Rights },
+      { path: '/roles', component: Roles },
+    ],
+  },
 ]
 
-
 const router = new VueRouter({
-  routes
+  routes,
 })
 
 //  挂载路由导航守卫
@@ -31,14 +38,13 @@ const router = new VueRouter({
 */
 router.beforeEach((to, from, next) => {
   // 用户访问登录页，直接放行
-  if(to.path === '/login') return next();
+  if (to.path === '/login') return next()
   // 获取token
   const tokenStr = window.sessionStorage.getItem('token')
   // 没有token，则强制跳转至登录页
-  if(!tokenStr) return next('/login')
+  if (!tokenStr) return next('/login')
   // 已有token，则放行
   next()
 })
-
 
 export default router
