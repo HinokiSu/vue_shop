@@ -8,6 +8,8 @@ import './assets/css/global.css'
 import './assets/fonts/iconfont.css'
 // 导入axios
 import axios from 'axios'
+// 导入树形表格
+import TreeTable from 'vue-table-with-tree-grid'
 
 // 关闭生产提示
 Vue.config.productionTip = false
@@ -25,6 +27,9 @@ axios.interceptors.request.use(config => {
 
 // 全局使用axios
 Vue.prototype.$http = axios
+
+// 全局注册
+Vue.component('tree-table', TreeTable)
 
 new Vue({
   router,

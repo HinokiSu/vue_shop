@@ -31,3 +31,16 @@ body,
 .el-pagination {
   margin-top: 15px;
 }
+
+/* 级联选择器 */
+/* 解决选择内容过高问题 */
+.el-cascader-menu {
+  height: 300px;
+}
+.el-cascader {
+  width: 100%;
+}
+/* 隐藏级联选择器中选择内容横向滚动条 */
+.el-scrollbar__wrap {
+  overflow-x: hidden;
+}

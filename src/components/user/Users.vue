@@ -172,7 +172,7 @@
       <div>
         <p>当前的用户: {{ userInfo.username }}</p>
         <p>当前的角色: {{ userInfo.role_name }}</p>
-        <p>分配新角色: </p>
+        <p>分配新角色:</p>
         <el-select v-model="selectedRoleId" placeholder="请选择">
           <el-option
             v-for="role in rolesList"
@@ -185,9 +185,7 @@
       </div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="setRoleDialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="saveRoleInfo"
-          >确 定</el-button
-        >
+        <el-button type="primary" @click="saveRoleInfo">确 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -299,7 +297,7 @@ export default {
       // 所有角色的角色列表
       rolesList: [],
       // 当前选中的角色
-      selectedRoleId: ''
+      selectedRoleId: '',
     }
   },
   created() {
@@ -347,7 +345,7 @@ export default {
     },
     // 点击按钮，添加新用户
     addUser() {
-      console.log(this.$refs.addFormRef);
+      console.log(this.$refs.addFormRef)
       this.$refs.addFormRef.validate(async (valid) => {
         if (!valid) return
         // 可以发起添加用户的网络请求
@@ -444,9 +442,12 @@ export default {
       if (!this.selectedRoleId) {
         return this.$message.error('请选择要分配的角色!')
       }
-      const { data: res} = await this.$http.put(`users/${this.userInfo.id}/role`, {
-        rid: this.selectedRoleId
-      })
+      const { data: res } = await this.$http.put(
+        `users/${this.userInfo.id}/role`,
+        {
+          rid: this.selectedRoleId,
+        }
+      )
       if (res.meta.status !== 200) {
         return this.$message.error('更新角色失败!')
       }
@@ -458,7 +459,7 @@ export default {
     setRoleDiaglogClosed() {
       this.selectedRoleId = ''
       this.userInfo = {}
-    }
+    },
   },
 }
 </script>
