@@ -10,6 +10,13 @@ import './assets/fonts/iconfont.css'
 import axios from 'axios'
 // 导入树形表格
 import TreeTable from 'vue-table-with-tree-grid'
+// 导入富文本编辑器
+import VueQuilllEditor from 'vue-quill-editor'
+// 导入富文本编辑器的样式
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+
 
 // 关闭生产提示
 Vue.config.productionTip = false
@@ -30,6 +37,23 @@ Vue.prototype.$http = axios
 
 // 全局注册
 Vue.component('tree-table', TreeTable)
+// 将富文本编辑器，注册为全局可用
+Vue.use(VueQuilllEditor)
+
+// 全局过滤器  — 处理时间
+Vue.filter('dateFormat', (originVal) => {
+  const dt = new Date(originVal)
+
+  // 获取完整年份
+  const year = dt.getFullYear()
+  // 获取月份， 第一个月为0 所以+1 然后转换成字符串，不足2位在前面补0
+  const month = (dt.getMonth() + 1 + '').padStart(2, '0')
+  const day = (dt.getDate() + '').padStart(2, '0')
+  const hours = (dt.getHours() + '').padStart(2, '0')
+  const mintues = (dt.getMinutes() + '').padStart(2, '0')
+  const seconds = (dt.getSeconds() + '').padStart(2, '0')
+  return `${year}-${month}-${day} ${hours}:${mintues}:${seconds}`
+})
 
 new Vue({
   router,

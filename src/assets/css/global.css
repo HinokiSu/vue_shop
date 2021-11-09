@@ -44,3 +44,16 @@ body,
 .el-scrollbar__wrap {
   overflow-x: hidden;
 }
+
+/* 步骤条 */
+.el-steps {
+  margin: 15px 0;
+}
+.el-step__title {
+  font-size: 15px;
+}
+
+/* 富文本 */
+.ql-editor {
+  min-height: 300px;
+}
