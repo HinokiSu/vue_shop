@@ -98,8 +98,8 @@
           label-width="80px"
         >
           <!-- 标签页 -->
-          <el-tabs v-model="activeTabIndex" @tab-click="handleTablick">
-            <el-tab-pane label="商品基本信息">
+          <el-tabs v-model="activeIndex" @tab-click="handleTablick">
+            <el-tab-pane label="商品基本信息" name="0">
               <el-form-item label="商品名称" prop="goods_name">
                 <el-input v-model="editFormInfo.goods_name"></el-input>
               </el-form-item>
@@ -122,13 +122,25 @@
                 ></el-input>
               </el-form-item>
             </el-tab-pane>
-            <el-tab-pane label="商品参数">
-              <el-form-item v-for="item in manyTabData" :key="item.goods_id">
+            <el-tab-pane label="商品参数" name="1">
+              <el-form-item
+                :label="item.attr_name"
+                v-for="item in goodsManyData"
+                :key="item.attr_id"
+              >
+                <!-- 多选框组 -->
+                <el-checkbox-group v-model="item.attr_vals">
+                  <el-checkbox
+                    :label="val"
+                    v-for="(val, i) in item.attr_vals"
+                    :key="i"
+                  ></el-checkbox>
+                </el-checkbox-group>
               </el-form-item>
             </el-tab-pane>
-            <el-tab-pane label="商品属性"></el-tab-pane>
-            <el-tab-pane label="商品图片"></el-tab-pane>
-            <el-tab-pane label="商品内容"></el-tab-pane>
+            <el-tab-pane label="商品属性" name="2"></el-tab-pane>
+            <el-tab-pane label="商品图片" name="3"></el-tab-pane>
+            <el-tab-pane label="商品内容" name="4"></el-tab-pane>
           </el-tabs>
         </el-form>
 
@@ -176,10 +188,10 @@ export default {
         pics: [],
         attrs: [],
       },
-      // 商品动态参数
-      manyTabData: [],
-      // 商品静态属性
-      onlyTabData: [],
+      // 商品的 动态参数
+      goodsManyData: [],
+      goodsOnlyData: [],
+
       // 编辑表单的 校验规则
       editFormRules: {
         goods_name: [
@@ -195,9 +207,11 @@ export default {
           { required: true, message: '请输入商品重量', trigger: 'blur' },
         ],
       },
+      // 商品分类ID
+      cateId: 0,
       /* 标签页 tabs */
       // 标签页当前索引
-      activeTabIndex: 0,
+      activeIndex: 0,
     }
   },
   methods: {
@@ -258,6 +272,7 @@ export default {
         return this.$message.error('获取商品信息失败!')
       }
       const {
+        cat_id,
         goods_name,
         goods_price,
         goods_number,
@@ -267,6 +282,7 @@ export default {
         attrs,
       } = res.data
 
+      this.cateId = cat_id
       this.editFormInfo = {
         goods_name,
         goods_price,
@@ -276,13 +292,24 @@ export default {
         pics,
         attrs,
       }
-      console.log(this.editFormInfo)
+      this.editFormInfo.attrs.forEach((item) => {
+        // 将商品自身的动态参数/静态属性 分别存放
+        if (item.attr_sel === 'many') {
+          this.goodsManyData.push(item)
+        } else {
+          this.goodsOnlyData.push(item)
+        }
+      })
+      console.log('many', this.goodsManyData)
+      console.log('only', this.goodsOnlyData)
       // 显示 编辑对话框
       this.editGoodsDialogVisible = true
     },
     // 监听对话框关闭
     editDialogClose() {
+      this.activeIndex = '0'
       this.$refs.editFormRef.resetFields()
+      this.goodsManyData = []
       this.editFormInfo = {
         goods_name: '',
         goods_price: 0,
@@ -296,20 +323,23 @@ export default {
     },
 
     /* 标签页 相关函数 */
+
     // 处理点击标签页
-    handleTablick() {
-     /*  // 访问动态参数tab
-      if (this.activeTabIndex === '1') {
-        // 获取动态参数
-        const manyRes = this.editFormInfo.attrs
-          // 将参数 转换位为 数组
-          manyRes.forEach((item) => {
-            item.attr_vals =
-              item.attr_vals.length === 0 ? [] : item.attr_vals.split(' ')
-          })
-        this.manyTabData = manyRes
-        console.log(this.manyTabData);
-      } */
+    async handleTablick() {
+      // 访问动态参数tab
+      if (this.activeIndex === '1') {
+        // 该商品分类中的所有动态参数
+        this.goodsManyData.forEach((item) => {
+          // 将 该商品所在的分类参数 按空格切割 转换为 数组
+          item.attr_vals =
+            item.attr_vals.length === 0 ? [] : item.attr_vals.split(' ')
+          // 商品自身 已有的 动态参数
+          item.attr_value =
+            item.attr_value.length === 0 ? [] : item.attr_value.split(' ')
+        })
+      } else if (this.activeIndex === '2') {
+        console.log(this.goodsOnlyData);
+      } 
     },
   },
 }

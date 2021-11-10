@@ -361,6 +361,7 @@ export default {
         )
         this.getParamsData()
         this.$message.success('添加参数成功!')
+        this.addParamDialogVisible = false
       })
     },
     // 添加参数对话框 关闭事件
