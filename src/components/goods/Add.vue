@@ -147,7 +147,7 @@
 // 导入lodash
 import _ from 'lodash'
 export default {
-  name: 'Add',
+  name: 'AddCompt',
   data() {
     return {
       // 步骤条 当前索引

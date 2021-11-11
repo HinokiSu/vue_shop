@@ -222,7 +222,7 @@
 
 <script>
 export default {
-  name: 'Params',
+  name: 'ParamsCompt',
   created() {
     // 获取所有商品分类列表数据
     this.getCateList()
@@ -261,7 +261,7 @@ export default {
         attr_name: [
           {
             required: true,
-            message: `请输入${this.currentTabTitel}名称!`,
+            message: `请输入参数/属性名称!`,
             trigger: 'blur',
           },
         ],
@@ -359,6 +359,9 @@ export default {
           `categories/${this.cateId}/attributes`,
           this.addParamFormInfo
         )
+        if (res.meta.status !== 201) {
+          return this.$message.error('添加参数失败!')
+        }
         this.getParamsData()
         this.$message.success('添加参数成功!')
         this.addParamDialogVisible = false
@@ -461,7 +464,8 @@ export default {
       row.inputVisible = true
       // 让文本框自动获取焦点
       /* $nextTick 方法的作用，就是当页面上元素被重新渲染之后，才会指定回调函数中的代码 */
-      this.$nextTick((_) => {
+      // eslint-disable-next-line no-unused-vars
+      this.$nextTick( _ => {
         this.$refs.saveTagInputRef.$refs.input.focus()
       })
     },

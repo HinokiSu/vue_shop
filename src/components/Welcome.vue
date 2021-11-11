@@ -5,11 +5,9 @@
 </template>
 
 <script>
-  export default {
-
-  }
+export default {
+  name: 'WelcomeCompt'
+}
 </script>
 
-<style lang="less" scoped>
-
-</style>
+<style lang="less" scoped></style>

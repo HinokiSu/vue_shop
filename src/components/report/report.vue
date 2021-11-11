@@ -19,7 +19,7 @@ import * as echarts from 'echarts'
 import _ from 'lodash'
 
 export default {
-  name: 'Report',
+  name: 'ReportCompt',
   data () {
     return {
       // 需要合并的数据

@@ -193,7 +193,7 @@
 
 <script>
 export default {
-  name: 'Users',
+  name: 'UsersCompt',
   data() {
     // 验证邮箱的规则
     // rule,  cb回调函数
@@ -333,6 +333,7 @@ export default {
       )
       if (res.meta.status !== 200) {
         // 将页面显示的重置回去
+        // eslint-disable-next-line require-atomic-updates
         userinfo.mg_state = !userinfo.mg_state
         return this.$message.error('更新用户状态失败!')
       }

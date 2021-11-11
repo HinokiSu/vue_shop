@@ -181,7 +181,7 @@
 
 <script>
 export default {
-  name: 'Roles',
+  name: 'RolesCompt',
   created() {
     this.getRolesList()
   },
@@ -263,6 +263,7 @@ export default {
         return this.$message.error('删除权限失败!')
       }
       // 使用this.getRolesList() 会引起 模板的重新渲染
+      // eslint-disable-next-line require-atomic-updates
       role.children = res.data
       this.$message.success('删除成功!')
     },
@@ -299,7 +300,7 @@ export default {
       this.defKeys = []
     },
     // 点击为角色分配权限
-    async allotRights(id) {
+    async allotRights() {
       const keys = [
         ...this.$refs.treeRef.getCheckedKeys(),
         ...this.$refs.treeRef.getHalfCheckedKeys(),

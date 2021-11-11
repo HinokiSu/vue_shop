@@ -28,7 +28,7 @@
 
 <script>
   export default {
-    name: 'Login',
+    name: 'LoginCompt',
     data () {
       return {
         // 登录表单的数据绑定对象

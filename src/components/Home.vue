@@ -68,7 +68,7 @@
 
 <script>
 export default {
-  name: 'Home',
+  name: 'HomeCompt',
   data() {
     return {
       // 左侧菜单数据

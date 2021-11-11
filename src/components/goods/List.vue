@@ -157,7 +157,7 @@
 
 <script>
 export default {
-  name: 'List',
+  name: 'ListCompt',
   created() {
     this.getGoodsList()
   },

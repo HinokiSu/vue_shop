@@ -1,4 +1,9 @@
 # vue_shop
+发布时使用的插件:
+`@babel/plugin-syntax-dynamic-import`
+`babel-plugin-transform-remove-console`
+
+
 
 ## Project setup
 ```

@@ -143,7 +143,7 @@
 
 <script>
 export default {
-  name: 'Cate',
+  name: 'CateCompt',
   created() {
     this.getCateList()
   },
@@ -197,7 +197,7 @@ export default {
         // 指定父子嵌套的属性
         children: 'children',
       },
-      // 选中的父级分类的 ID　数组
+      // 选中的父级分类的 ID数组
       selectedKeys: [],
 
       // 控制编辑分类对话框的 显示/隐藏

@@ -5,7 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title><%= htmlWebpackPlugin.options.isProd ? '' : 'dev -' %>电商后台管理系统</title>
+    <% if(htmlWebpackPlugin.options.isProd){ %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.6/theme-chalk/index.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js">
+    <!-- 富文本样式 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.core.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.snow.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.bubble.min.css">
+    <!-- js CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.2.0/vue-router.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.2.2/echarts.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js">
+
+    <!-- 富文本编辑器的js文件 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.min.js">
+    <!-- element-ui -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js">
+    <% } %>
   </head>
   <body>
     <noscript>

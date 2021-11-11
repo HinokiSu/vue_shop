@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: 'Rigths',
+  name: 'RigthsCompt',
   created() {
     // 获取所有权限列表
     this.getRightsList()

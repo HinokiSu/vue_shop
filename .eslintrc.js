@@ -1,14 +1,32 @@
 module.exports = {
+  "env": [
+    'eslint:recommended',
+    'plugin:vue/essential'
+  ],
+
+  "extends": [
+      "eslint:recommended",
+      "plugin:vue/essential"
+  ],
+
+  "parserOptions": {
+      "ecmaVersion": 13,
+      "sourceType": "module"
+  },
+
+  "plugins": [
+      "vue"
+  ],
+
+  "rules": {
+    "require-atomic-updates": "off"
+  },
+
   root: true,
 
   env: {
     node: true
   },
-
-  extends: [
-    'plugin:vue/essential',
-    '@vue/standard'
-  ],
 
   parserOptions: {
     parser: 'babel-eslint'
@@ -16,11 +34,10 @@ module.exports = {
 
   rules: {
     'no-console': 'off',
-    'no-debugger': 'off',
+    'no-debugger': 'off'
   },
 
-  'extends': [
-    'plugin:vue/recommended',
-    '@vue/standard'
+  plugins: [
+    'vue'
   ]
-}
+};

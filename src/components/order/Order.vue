@@ -160,7 +160,7 @@
 <script>
 import cityData from './citydata.js'
 export default {
-  name: 'Order',
+  name: 'OrderCompt',
   data() {
     return {
       queryInfo: {
