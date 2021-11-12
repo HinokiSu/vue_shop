@@ -11,7 +11,7 @@ import axios from 'axios'
 // 导入树形表格
 import TreeTable from 'vue-table-with-tree-grid'
 // 导入富文本编辑器
-import VueQuilllEditor from 'vue-quill-editor'
+import VueQuillEditor from 'vue-quill-editor'
 // 导入富文本编辑器的样式
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
@@ -47,7 +47,7 @@ Vue.prototype.$http = axios
 // 全局注册
 Vue.component('tree-table', TreeTable)
 // 将富文本编辑器，注册为全局可用
-Vue.use(VueQuilllEditor)
+Vue.use(VueQuillEditor)
 
 // 全局过滤器  — 处理时间
 Vue.filter('dateFormat', (originVal) => {

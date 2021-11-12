@@ -12,7 +12,7 @@ module.exports = {
         lodash: '_',
         echarts: 'echarts',
         nprogress: 'NProgress',
-        'vue-quill-editor': 'VueQuillEditor',
+        // 'vue-quill-editor': 'VueQuillEditor',
       })
       // 配置主页 标题
       config.plugin('html').tap(args => {

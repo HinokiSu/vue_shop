@@ -1,6 +1,6 @@
 // 这个项目发布阶段需要用到的 babel 插件
 const prodPlugins = []
-if (process.env.NODE === 'production') {
+if (process.env.NODE_ENV === 'production') {
   prodPlugins.push('transform-remove-console')
 }
 
@@ -17,6 +17,6 @@ module.exports = {
     // 发布产品的使用的插件数组
     ...prodPlugins,
     // 安装 路由懒加载 插件
-    '@babel/plugin-syntax-dynamic-import'
+    '@babel/plugin-syntax-dynamic-import',
   ],
 }
