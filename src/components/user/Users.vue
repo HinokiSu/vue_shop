@@ -1,11 +1,8 @@
 <template>
   <div>
     <!-- 面包屑导航区域 -->
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>用户管理</el-breadcrumb-item>
-      <el-breadcrumb-item>用户列表</el-breadcrumb-item>
-    </el-breadcrumb>
+    <GenCrumbs toPath="/home" firLev="首页" secoLev="用户管理" thirLev="用户列表"/>
+
     <!-- 卡片视图区域 -->
     <el-card class="box-card">
       <!-- 搜索与添加区域 -->
@@ -191,8 +188,12 @@
 </template>
 
 <script>
+import GenCrumbs from '../general/GenCrumbs.vue'
 export default {
   name: 'UsersCompt',
+  components: {
+    GenCrumbs
+  },
   data() {
     // 验证邮箱的规则
     // rule,  cb回调函数
