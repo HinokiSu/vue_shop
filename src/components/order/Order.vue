@@ -1,11 +1,8 @@
 <template>
   <div>
     <!-- 面包屑导航区域 -->
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>订单管理</el-breadcrumb-item>
-      <el-breadcrumb-item>订单列表</el-breadcrumb-item>
-    </el-breadcrumb>
+    <GenCrumbs toPath="/home" firLev="首页" secoLev="订单管理" thirLev="订单列表"/>
+
 
     <!-- 卡片区域 -->
     <el-card>
@@ -158,9 +155,13 @@
 </template>
 
 <script>
+import GenCrumbs from '../general/GenCrumbs.vue'
 import cityData from './citydata.js'
 export default {
   name: 'OrderCompt',
+  components: {
+    GenCrumbs
+  },
   data() {
     return {
       queryInfo: {

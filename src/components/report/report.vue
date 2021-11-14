@@ -1,11 +1,9 @@
 <template>
   <div>
     <!-- 面包屑导航区域 -->
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>数据统计</el-breadcrumb-item>
-      <el-breadcrumb-item>数据报表</el-breadcrumb-item>
-    </el-breadcrumb>
+    <GenCrumbs toPath="/home" firLev="首页" secoLev="数据统计" thirLev="数据报表"/>
+
+
     <el-card>
       <!-- 未ECharts 准备一个具备大小 （宽高）的Dom -->
       <div id="main" style="width: 750px; height: 400px"></div>
@@ -14,12 +12,15 @@
 </template>
 
 <script>
+import GenCrumbs from '../general/GenCrumbs.vue'
 // 导入echarts
 import * as echarts from 'echarts'
 import _ from 'lodash'
-
 export default {
   name: 'ReportCompt',
+  components: {
+    GenCrumbs
+  },
   data () {
     return {
       // 需要合并的数据

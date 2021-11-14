@@ -1,11 +1,8 @@
 <template>
   <div>
     <!-- 面包屑导航区域 -->
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>商品管理</el-breadcrumb-item>
-      <el-breadcrumb-item>添加商品</el-breadcrumb-item>
-    </el-breadcrumb>
+    <GenCrumbs toPath="/home" firLev="首页" secoLev="商品管理" thirLev="添加商品"/>
+
     <!-- 卡片区域 -->
     <el-card>
       <!-- 提示区域 -->
@@ -146,8 +143,12 @@
 <script>
 // 导入lodash
 import _ from 'lodash'
+import GenCrumbs from '../general/GenCrumbs.vue'
 export default {
   name: 'AddCompt',
+  components: {
+    GenCrumbs
+  },
   data() {
     return {
       // 步骤条 当前索引

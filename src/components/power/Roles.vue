@@ -1,11 +1,8 @@
 <template>
   <div>
     <!-- 面包屑区域 -->
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>权限管理</el-breadcrumb-item>
-      <el-breadcrumb-item>角色列表</el-breadcrumb-item>
-    </el-breadcrumb>
+    <GenCrumbs toPath="/home" firLev="首页" secoLev="权限管理" thirLev="角色列表"/>
+
 
     <!-- 卡片区域 -->
     <el-card>
@@ -180,8 +177,12 @@
 </template>
 
 <script>
+import GenCrumbs from '../general/GenCrumbs.vue'
 export default {
   name: 'RolesCompt',
+  components: {
+    GenCrumbs
+  },
   created() {
     this.getRolesList()
   },

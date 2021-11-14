@@ -1,11 +1,7 @@
 <template>
   <div>
     <!-- 面包屑 -->
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>权限管理</el-breadcrumb-item>
-      <el-breadcrumb-item>权限列表</el-breadcrumb-item>
-    </el-breadcrumb>
+    <GenCrumbs toPath="/home" firLev="首页" secoLev="权限管理" thirLev="权限列表" />
 
     <!-- 卡片视图区域 -->
     <el-card class="box-card">
@@ -18,7 +14,9 @@
           <!-- 使用作用域插槽来自定义 -->
           <template slot-scope="scope">
             <el-tag v-if="scope.row.level === '0'">一级</el-tag>
-            <el-tag type="success" v-else-if="scope.row.level === '1'">二级</el-tag>
+            <el-tag type="success" v-else-if="scope.row.level === '1'"
+              >二级</el-tag
+            >
             <el-tag type="warning" v-else>三级</el-tag>
           </template>
         </el-table-column>
@@ -28,8 +26,12 @@
 </template>
 
 <script>
+import GenCrumbs from '../general/GenCrumbs'
 export default {
   name: 'RigthsCompt',
+  components: {
+    GenCrumbs,
+  },
   created() {
     // 获取所有权限列表
     this.getRightsList()
