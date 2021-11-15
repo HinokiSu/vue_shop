@@ -83,7 +83,7 @@
 
 <style lang="less" scoped>
   .login_container {
-    background-color: #2b4b6b;
+    background-image: linear-gradient(to right, rgb(85, 143, 190), rgb(48, 156, 66));
     height: inherit;
   }
   // 表单盒子
