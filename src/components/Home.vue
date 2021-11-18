@@ -2,11 +2,11 @@
   <el-container class="home-container">
     <!-- 头部区域 -->
     <el-header>
-      <div>
+      <div class="header-title" @click="toWelcome">
         <img src="../assets/img/cat.png" alt="" />
-        <span>System</span>
+        <span>电商后台管理系统</span>
       </div>
-      <el-button type="info" @click="logout">退出</el-button>
+      <el-button type="primary" @click="logout">退出</el-button>
     </el-header>
     <!-- 页面主主体区 -->
     <el-container>
@@ -93,6 +93,10 @@ export default {
     this.activePath = window.sessionStorage.getItem('activePath')
   },
   methods: {
+    // 点击 左上角 返回到Welcome
+    toWelcome() {
+      this.$router.push('/welcome')
+    },
     /* 退出功能实现原理
         1. 基于token的方式实现退出比较简单，只需要销毁本地的token即可，
         2. 这样，后续的请求就不会携带token，必须重新登录生成一个新的token之后 才可以访问页面
@@ -130,15 +134,23 @@ export default {
 
 /* 头部 */
 .el-header {
-  background-color: cornsilk;
+  background-color: rgb(255, 230, 197);
   display: flex;
   // 左右贴边对齐
   justify-content: space-between;
   padding-left: 0;
   // 将退出按钮 在flex容器中纵轴方向的对齐方式
   align-items: center;
-  color: burlywood;
-  font-size: 30px;
+  color: rgb(226, 200, 128);
+  // border-bottom: 1px solid rgba(185, 185, 185, 0.685);
+  box-shadow: 0px 0px 12px rgb(211, 211, 211);
+  border-radius: 0 0 30px 0;
+
+  .header-title {
+    cursor: pointer;
+  }
+  
+
   // 嵌套
   > div {
     display: flex;
@@ -146,6 +158,8 @@ export default {
 
     span {
       margin-left: 15px;
+      font-size: 20px;
+      font-weight: bold;
     }
 
     img {
@@ -170,7 +184,7 @@ export default {
 }
 // 展开按钮
 .toggle-button {
-  background-color: burlywood;
+  background-color: rgba(247, 202, 135, 0.884);
   font-size: 16px;
   // 行高
   line-height: 24px;
@@ -184,6 +198,6 @@ export default {
 
 /* 右侧内容区 */
 .el-main {
-  background-color: whitesmoke;
+  background-color: #fff;
 }
 </style>
